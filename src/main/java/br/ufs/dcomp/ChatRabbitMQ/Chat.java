@@ -71,6 +71,25 @@ class Commands {
     this.userName = currentUser;
   }
 
+  private void printCommands() {
+    System.out.println("Possible commands");
+    System.out.println("addGroup: create a new group\nEx: !addGroup groupName\n");
+    System.out.println("addUser: add a user in a group\nEX: !addUser userName groupName\n");
+    System.out.println("delFromGroup: remove a user from a group\nEx: !delFromGroup userName groupName\n");
+    System.out.println("removeGroup: delete a group\nEx: !removeGroup groupName\n");
+  }
+
+  private boolean hasCorrectAmountOfArgs(String[] args, int length) {
+    if (args.length != length) {
+      System.out.println("Incorret command.\n\n");
+      this.printCommands();
+
+      return false;
+    }
+
+    return true;
+  }
+
   private void createGroup(String groupName) throws IOException {
     this.commandsChannel.exchangeDeclare(groupName, "fanout", false, false, null);
     this.commandsChannel.queueBind(this.userName, groupName, "");
@@ -94,23 +113,28 @@ class Commands {
 
     switch (command) {
       case "!addGroup":
-        this.createGroup(args[1]);
+        if (this.hasCorrectAmountOfArgs(args, 2)) {
+          this.createGroup(args[1]);
+        }
         break;
       case "!addUser":
-        this.addUserToGroup(args[1], args[2]);
+        if (this.hasCorrectAmountOfArgs(args, 3)) {
+          this.addUserToGroup(args[1], args[2]);
+        }
         break;
       case "!delFromGroup":
-        this.removeUserFromGroup(args[1], args[2]);
+        if (this.hasCorrectAmountOfArgs(args, 3)) {
+          this.removeUserFromGroup(args[1], args[2]);
+        }
         break;
       case "!removeGroup":
-        this.deleteGroup(args[1]);
+        if (this.hasCorrectAmountOfArgs(args, 2)) {
+          this.deleteGroup(args[1]);
+        }
         break;
       default:
-        System.out.println("Command unknown.\n\nPossible commands");
-        System.out.println("addGroup: create a new group\nEx: !addGroup groupName\n");
-        System.out.println("addUser: add a user in a group\nEX: !addUser userName groupName\n");
-        System.out.println("delFromGroup: remove a user from a group\nEx: !delFromGroup userName groupName\n");
-        System.out.println("removeGroup: delete a group\nEx: !removeGroup groupName\n");
+        System.out.println("Command unknown.\n\n");
+        this.printCommands();
         break;
     }
   }
