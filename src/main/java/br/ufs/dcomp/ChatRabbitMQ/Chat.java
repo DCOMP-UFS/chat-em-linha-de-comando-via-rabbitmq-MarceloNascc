@@ -96,19 +96,15 @@ class Commands {
       case "!addGroup":
         this.createGroup(args[1]);
         break;
-
       case "!addUser":
         this.addUserToGroup(args[1], args[2]);
         break;
-
       case "!delFromGroup":
         this.removeUserFromGroup(args[1], args[2]);
         break;
-
       case "!removeGroup":
         this.deleteGroup(args[1]);
         break;
-
       default:
         System.out.println("Command unknown.");
         break;
@@ -159,29 +155,37 @@ public class Chat {
       String userInput = input.nextLine();
 
       while (!userInput.contentEquals("exit")) {
-        if (userInput.startsWith("@")) {
-          currentChatWith.set(userInput);
-          senderChannel.queueDeclare(currentChatWith.get().substring(1), false, false, false, null);
-        } else if (userInput.startsWith("#")) {
-          currentChatWith.set(userInput);
-        } else if (userInput.startsWith("!")) {
-          commandsExecutor.executeCommand(userInput);
-        } else if (currentChatWith.get().length() > 0) {
-          Message senderMessage = new Message();
+        switch (userInput.charAt(0)) {
+          case '@':
+            currentChatWith.set(userInput);
+            senderChannel.queueDeclare(currentChatWith.get().substring(1), false, false, false, null);
+            break;
+          case '#':
+            currentChatWith.set(userInput);
+            break;
+          case '!':
+            commandsExecutor.executeCommand(userInput);
+            break;
+          default:
+            if (currentChatWith.get().length() > 0) {
+              Message senderMessage = new Message();
 
-          boolean isAGroup = currentChatWith.get().startsWith("#");
-          String name = !isAGroup ? userName : userName + currentChatWith.get();
-          senderMessage.setMessage(name, "text/plain", userInput);
+              boolean isChattingWithAGroup = currentChatWith.get().startsWith("#");
+              String name = !isChattingWithAGroup ? userName : userName + currentChatWith.get();
 
-          ChatProto.Mensagem message = senderMessage.getMessage();
-          byte[] buffer = message.toByteArray();
+              senderMessage.setMessage(name, "text/plain", userInput);
 
-          String exchange = isAGroup ? currentChatWith.get().substring(1) : "";
-          String routingKey = !isAGroup ? currentChatWith.get().substring(1) : "";
+              ChatProto.Mensagem message = senderMessage.getMessage();
+              byte[] buffer = message.toByteArray();
 
-          senderChannel.basicPublish(exchange, routingKey, null, buffer);
-        } else {
-          System.out.println("You must select who you want to chat with...");
+              String exchange = isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
+              String routingKey = !isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
+
+              senderChannel.basicPublish(exchange, routingKey, null, buffer);
+            } else {
+              System.out.println("You must select who you want to chat with...");
+            }
+            break;
         }
 
         System.out.print(currentChatWith.get() + ">> ");
