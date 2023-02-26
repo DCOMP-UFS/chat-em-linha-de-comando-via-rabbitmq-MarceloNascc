@@ -77,8 +77,8 @@ class Commands {
     this.commandsChannel.queueBind(userName, groupName, "");
   }
 
-  private void removeUserFromGroup(String userName, String groupName) {
-    System.out.println("This method has not yet been implemented.");
+  private void removeUserFromGroup(String userName, String groupName) throws IOException {
+    this.commandsChannel.queueUnbind(userName, groupName, "");
   }
 
   private void deleteGroup(String groupName) {
