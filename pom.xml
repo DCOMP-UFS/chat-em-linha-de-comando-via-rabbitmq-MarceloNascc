@@ -25,7 +25,7 @@
       </plugin>
     </plugins>
   </build>
-   <properties>
+  <properties>
     <protobuf.version>3.11.1</protobuf.version>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
@@ -36,15 +36,25 @@
       <artifactId>amqp-client</artifactId>
       <version>5.8.0</version>
     </dependency>
-     <dependency>
+    <dependency>
        <groupId>org.slf4j</groupId>
        <artifactId>slf4j-api</artifactId>
        <version>1.7.30</version>
-   </dependency>
-   <dependency>
+    </dependency>
+    <dependency>
        <groupId>org.slf4j</groupId>
        <artifactId>slf4j-simple</artifactId>
        <version>1.7.30</version>
-   </dependency>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>3.11.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java-util</artifactId>
+      <version>3.11.1</version>
+    </dependency>
   </dependencies>
 </project>
