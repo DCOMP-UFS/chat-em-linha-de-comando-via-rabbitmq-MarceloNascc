@@ -81,8 +81,8 @@ class Commands {
     this.commandsChannel.queueUnbind(userName, groupName, "");
   }
 
-  private void deleteGroup(String groupName) {
-    System.out.println("This method has not yet been implemented.");
+  private void deleteGroup(String groupName) throws IOException {
+    this.commandsChannel.exchangeDelete(groupName);
   }
 
   public void executeCommand(String userInput) throws IOException {
@@ -159,7 +159,7 @@ public class Chat {
         if (userInput.startsWith("@")) {
           currentChatWith.set(userInput);
           senderChannel.queueDeclare(currentChatWith.get().substring(1), false, false, false, null);
-        } else if(userInput.startsWith("!")){
+        } else if (userInput.startsWith("!")) {
           commandsExecutor.executeCommand(userInput);
         } else if (currentChatWith.get().length() > 0) {
           Message senderMessage = new Message();
