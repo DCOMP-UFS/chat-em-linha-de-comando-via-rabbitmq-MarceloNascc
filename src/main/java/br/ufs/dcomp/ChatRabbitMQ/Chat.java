@@ -64,13 +64,16 @@ class ChatWith {
 
 class Commands {
   private Channel commandsChannel;
+  private String userName;
 
-  public Commands(Connection conn) throws IOException {
+  public Commands(Connection conn, String currentUser) throws IOException {
     this.commandsChannel = conn.createChannel();
+    this.userName = currentUser;
   }
 
   private void createGroup(String groupName) throws IOException {
     this.commandsChannel.exchangeDeclare(groupName, "fanout", false, false, null);
+    this.commandsChannel.queueBind(this.userName, groupName, "");
   }
 
   private void addUserToGroup(String userName, String groupName) throws IOException {
@@ -150,7 +153,7 @@ public class Chat {
       senderChannel.queueDeclare(userName, false, false, false, null);
       consumerChannel.basicConsume(userName, true, consumer);
 
-      Commands commandsExecutor = new Commands(connection);
+      Commands commandsExecutor = new Commands(connection, userName);
 
       System.out.print("\n>> ");
       String userInput = input.nextLine();
@@ -163,7 +166,7 @@ public class Chat {
           commandsExecutor.executeCommand(userInput);
         } else if (currentChatWith.get().length() > 0) {
           Message senderMessage = new Message();
-          senderMessage.setMessage(userName.substring(0), "text/plain", userInput);
+          senderMessage.setMessage(userName, "text/plain", userInput);
 
           ChatProto.Mensagem message = senderMessage.getMessage();
           byte[] buffer = message.toByteArray();
