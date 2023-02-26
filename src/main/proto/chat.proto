@@ -5,16 +5,16 @@ package ChatRabbitMQ;
 option java_package = "br.ufs.dcomp.ChatRabbitMQ";
 option java_outer_classname = "ChatProto";
 
-message Mensagem {
-     string emissor = 1; // Nome do emissor
-     string data = 2; // Data de envio
-     string hora = 3; // Hora de envio
-     optional string grupo = 4; // Informa o nome do grupo, se a mensagem for para um grupo
-     Conteudo conteudo = 5;
+message Message {
+     string sender = 1; // Nome do emissor
+     string date = 2; // Data de envio
+     string time = 3; // Hora de envio
+     string group = 4; // Informa o nome do grupo, se a mensagem for para um grupo
+     Content content = 5;
 }
 
-message Conteudo {
-     string tipo = 1; // Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
-     bytes corpo = 2; // Sequência de bytes que compõe o corpo da mensagem
-     optional string nome = 3; // Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
+message Content {
+     string type = 1; // Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
+     bytes body = 2; // Sequência de bytes que compõe o corpo da mensagem
+     string name = 3; // Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
 }

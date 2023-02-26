@@ -11,8 +11,8 @@ import com.rabbitmq.client.*;
 import com.google.protobuf.*;
 
 class Message {
-  ChatProto.Mensagem.Builder senderMessage = ChatProto.Mensagem.newBuilder();
-  ChatProto.Conteudo.Builder content = ChatProto.Conteudo.newBuilder();
+  ChatProto.Message.Builder senderMessage = ChatProto.Message.newBuilder();
+  ChatProto.Content.Builder content = ChatProto.Content.newBuilder();
 
   // Building TimeZone Date
   Locale local = new Locale("pt", "BR");
@@ -21,7 +21,7 @@ class Message {
 
   // Setting senderMessage properties
 
-  public void setMessage(String userName, String type, String userInput) throws IOException, TimeoutException {
+  public void setMessage(String userName, String groupName, String type, String userInput, Boolean isGroup) throws IOException, TimeoutException {
     try {
       // Getting and formating date-time
       LocalDateTime dateNow = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
@@ -31,21 +31,22 @@ class Message {
       byte[] userMessage = userInput.getBytes("UTF-8");
 
       // setting Content props
-      content.setTipo("text/plain");
-      content.setCorpo(ByteString.copyFrom(userMessage));
+      content.setType("text/plain");
+      content.setBody(ByteString.copyFrom(userMessage));
 
       // setting Message props
-      senderMessage.setEmissor(userName);
-      senderMessage.setData(messageDate);
-      senderMessage.setHora(messageTime);
-      senderMessage.setConteudo(content);
+      senderMessage.setSender(userName);
+      senderMessage.setGroup(groupName);
+      senderMessage.setDate(messageDate);
+      senderMessage.setTime(messageTime);
+      senderMessage.setContent(content);
 
     } catch (Exception err) {
       System.out.println(err);
     }
   }
 
-  public ChatProto.Mensagem getMessage() {
+  public ChatProto.Message getMessage() {
     return this.senderMessage.build();
   }
 }
@@ -59,6 +60,43 @@ class ChatWith {
 
   public void set(String name) {
     this.user = name;
+  }
+}
+
+class MessageRabbitMQ {
+  public void sendMessage (String userName, String userInput, ChatWith currentChatWith, Channel senderChannel) throws IOException, TimeoutException {
+    if (currentChatWith.get().length() > 0) {
+      Message senderMessage = new Message();
+  
+      boolean isChattingWithAGroup = currentChatWith.get().startsWith("#");
+      String group = isChattingWithAGroup ? currentChatWith.get() : "";
+  
+      senderMessage.setMessage(userName, group, "text/plain", userInput, isChattingWithAGroup);
+  
+      ChatProto.Message message = senderMessage.getMessage();
+      byte[] buffer = message.toByteArray();
+  
+      String exchange = isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
+      String routingKey = !isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
+  
+      senderChannel.basicPublish(exchange, routingKey, null, buffer);
+    } else {
+      System.out.println("You must select who you want to chat with...");
+    }
+  }
+  
+  public void receiveMessage (byte[] body, ChatWith currentChatWith) throws IOException {
+    ChatProto.Message message = ChatProto.Message.parseFrom(body);
+    ChatProto.Content content = message.getContent();
+
+    String sender = message.getSender();
+    String date = message.getDate();
+    String time = message.getTime();
+    String group = message.getGroup();
+    String bodyMessage = content.getBody().toStringUtf8();
+
+    System.out.println("\n(" + date + " às " + time + ") " + sender + group + " diz: " + bodyMessage);
+    System.out.print(currentChatWith.get() + ">> ");
   }
 }
 
@@ -143,6 +181,8 @@ class Commands {
 public class Chat {
   public static void main(String[] argv) {
     try {
+      MessageRabbitMQ messageRabbitMQ = new MessageRabbitMQ();
+      
       ChatWith currentChatWith = new ChatWith();
       System.out.print("User: ");
 
@@ -150,27 +190,17 @@ public class Chat {
       String userName = input.nextLine();
 
       ConnectionFactory factory = new ConnectionFactory();
-      factory.setHost("100.25.35.237");
+      factory.setHost("54.237.55.155");
       factory.setUsername("admin");
-      factory.setPassword("rabbitmq2022.2");
+      factory.setPassword("admin");
       factory.setVirtualHost("/");
       Connection connection = factory.newConnection();
       Channel senderChannel = connection.createChannel();
       Channel consumerChannel = connection.createChannel();
 
       Consumer consumer = new DefaultConsumer(consumerChannel) {
-        public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body)
-            throws IOException {
-          ChatProto.Mensagem message = ChatProto.Mensagem.parseFrom(body);
-          ChatProto.Conteudo content = message.getConteudo();
-
-          String sender = message.getEmissor();
-          String date = message.getData();
-          String time = message.getHora();
-          String bodyMessage = content.getCorpo().toStringUtf8();
-
-          System.out.println("\n(" + date + " às " + time + ") " + sender + " diz: " + bodyMessage);
-          System.out.print(currentChatWith.get() + ">> ");
+        public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+          messageRabbitMQ.receiveMessage(body, currentChatWith);
         }
       };
 
@@ -195,24 +225,7 @@ public class Chat {
             commandsExecutor.executeCommand(userInput);
             break;
           default:
-            if (currentChatWith.get().length() > 0) {
-              Message senderMessage = new Message();
-
-              boolean isChattingWithAGroup = currentChatWith.get().startsWith("#");
-              String name = !isChattingWithAGroup ? userName : userName + currentChatWith.get();
-
-              senderMessage.setMessage(name, "text/plain", userInput);
-
-              ChatProto.Mensagem message = senderMessage.getMessage();
-              byte[] buffer = message.toByteArray();
-
-              String exchange = isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
-              String routingKey = !isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
-
-              senderChannel.basicPublish(exchange, routingKey, null, buffer);
-            } else {
-              System.out.println("You must select who you want to chat with...");
-            }
+            messageRabbitMQ.sendMessage(userName, userInput, currentChatWith, senderChannel);
             break;
         }
 

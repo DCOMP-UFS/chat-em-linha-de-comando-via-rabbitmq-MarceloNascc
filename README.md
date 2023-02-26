@@ -9,6 +9,7 @@ Antonio Hamilton Santos Freitas - 201800049471
 João Marcelo dos Santos Nascimento - 201600017427
 
 # Etapa 2
-- [ ] Separar as responsabilidades: Enviar mensagens, receber mensagens, Exibir o chat...
-- [ ] Aceitar nomes compostos para grupos e usuários?
-- [ ] Enviar o nome do grupo corretamente
+- [x] Separar as responsabilidades: Enviar mensagens, receber mensagens, Exibir o chat...
+- [x] Enviar o nome do grupo corretamente
+- [ ] (Tirar dúvida com professor) Quem não está dentro do grupo também pode enviar a mensagem, mas não recebe, é para verificar isso?
+- [ ] (Tirar dúvida com professor) Aceitar nomes compostos para grupos e usuários?

@@ -14,8 +14,8 @@ public final class ChatProto {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface MensagemOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ChatRabbitMQ.Mensagem)
+  public interface MessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChatRabbitMQ.Message)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -23,102 +23,102 @@ public final class ChatProto {
      * Nome do emissor
      * </pre>
      *
-     * <code>optional string emissor = 1;</code>
+     * <code>optional string sender = 1;</code>
      */
-    java.lang.String getEmissor();
+    java.lang.String getSender();
     /**
      * <pre>
      * Nome do emissor
      * </pre>
      *
-     * <code>optional string emissor = 1;</code>
+     * <code>optional string sender = 1;</code>
      */
     com.google.protobuf.ByteString
-        getEmissorBytes();
+        getSenderBytes();
 
     /**
      * <pre>
      * Data de envio
      * </pre>
      *
-     * <code>optional string data = 2;</code>
+     * <code>optional string date = 2;</code>
      */
-    java.lang.String getData();
+    java.lang.String getDate();
     /**
      * <pre>
      * Data de envio
      * </pre>
      *
-     * <code>optional string data = 2;</code>
+     * <code>optional string date = 2;</code>
      */
     com.google.protobuf.ByteString
-        getDataBytes();
+        getDateBytes();
 
     /**
      * <pre>
      * Hora de envio
      * </pre>
      *
-     * <code>optional string hora = 3;</code>
+     * <code>optional string time = 3;</code>
      */
-    java.lang.String getHora();
+    java.lang.String getTime();
     /**
      * <pre>
      * Hora de envio
      * </pre>
      *
-     * <code>optional string hora = 3;</code>
+     * <code>optional string time = 3;</code>
      */
     com.google.protobuf.ByteString
-        getHoraBytes();
+        getTimeBytes();
 
     /**
      * <pre>
      * Informa o nome do grupo, se a mensagem for para um grupo
      * </pre>
      *
-     * <code>optional string grupo = 4;</code>
+     * <code>optional string group = 4;</code>
      */
-    java.lang.String getGrupo();
+    java.lang.String getGroup();
     /**
      * <pre>
      * Informa o nome do grupo, se a mensagem for para um grupo
      * </pre>
      *
-     * <code>optional string grupo = 4;</code>
+     * <code>optional string group = 4;</code>
      */
     com.google.protobuf.ByteString
-        getGrupoBytes();
+        getGroupBytes();
 
     /**
-     * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+     * <code>optional .ChatRabbitMQ.Content content = 5;</code>
      */
-    boolean hasConteudo();
+    boolean hasContent();
     /**
-     * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+     * <code>optional .ChatRabbitMQ.Content content = 5;</code>
      */
-    br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo getConteudo();
+    br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content getContent();
     /**
-     * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+     * <code>optional .ChatRabbitMQ.Content content = 5;</code>
      */
-    br.ufs.dcomp.ChatRabbitMQ.ChatProto.ConteudoOrBuilder getConteudoOrBuilder();
+    br.ufs.dcomp.ChatRabbitMQ.ChatProto.ContentOrBuilder getContentOrBuilder();
   }
   /**
-   * Protobuf type {@code ChatRabbitMQ.Mensagem}
+   * Protobuf type {@code ChatRabbitMQ.Message}
    */
-  public  static final class Mensagem extends
+  public  static final class Message extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ChatRabbitMQ.Mensagem)
-      MensagemOrBuilder {
-    // Use Mensagem.newBuilder() to construct.
-    private Mensagem(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:ChatRabbitMQ.Message)
+      MessageOrBuilder {
+    // Use Message.newBuilder() to construct.
+    private Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Mensagem() {
-      emissor_ = "";
-      data_ = "";
-      hora_ = "";
-      grupo_ = "";
+    private Message() {
+      sender_ = "";
+      date_ = "";
+      time_ = "";
+      group_ = "";
     }
 
     @java.lang.Override
@@ -126,7 +126,7 @@ public final class ChatProto {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    private Mensagem(
+    private Message(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -149,36 +149,36 @@ public final class ChatProto {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              emissor_ = s;
+              sender_ = s;
               break;
             }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              data_ = s;
+              date_ = s;
               break;
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              hora_ = s;
+              time_ = s;
               break;
             }
             case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              grupo_ = s;
+              group_ = s;
               break;
             }
             case 42: {
-              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.Builder subBuilder = null;
-              if (conteudo_ != null) {
-                subBuilder = conteudo_.toBuilder();
+              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.Builder subBuilder = null;
+              if (content_ != null) {
+                subBuilder = content_.toBuilder();
               }
-              conteudo_ = input.readMessage(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.parser(), extensionRegistry);
+              content_ = input.readMessage(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(conteudo_);
-                conteudo_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(content_);
+                content_ = subBuilder.buildPartial();
               }
 
               break;
@@ -196,34 +196,34 @@ public final class ChatProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Mensagem_descriptor;
+      return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Message_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Mensagem_fieldAccessorTable
+      return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Message_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem.class, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem.Builder.class);
+              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message.class, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message.Builder.class);
     }
 
-    public static final int EMISSOR_FIELD_NUMBER = 1;
-    private volatile java.lang.Object emissor_;
+    public static final int SENDER_FIELD_NUMBER = 1;
+    private volatile java.lang.Object sender_;
     /**
      * <pre>
      * Nome do emissor
      * </pre>
      *
-     * <code>optional string emissor = 1;</code>
+     * <code>optional string sender = 1;</code>
      */
-    public java.lang.String getEmissor() {
-      java.lang.Object ref = emissor_;
+    public java.lang.String getSender() {
+      java.lang.Object ref = sender_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        emissor_ = s;
+        sender_ = s;
         return s;
       }
     }
@@ -232,40 +232,40 @@ public final class ChatProto {
      * Nome do emissor
      * </pre>
      *
-     * <code>optional string emissor = 1;</code>
+     * <code>optional string sender = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getEmissorBytes() {
-      java.lang.Object ref = emissor_;
+        getSenderBytes() {
+      java.lang.Object ref = sender_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        emissor_ = b;
+        sender_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int DATA_FIELD_NUMBER = 2;
-    private volatile java.lang.Object data_;
+    public static final int DATE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object date_;
     /**
      * <pre>
      * Data de envio
      * </pre>
      *
-     * <code>optional string data = 2;</code>
+     * <code>optional string date = 2;</code>
      */
-    public java.lang.String getData() {
-      java.lang.Object ref = data_;
+    public java.lang.String getDate() {
+      java.lang.Object ref = date_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        data_ = s;
+        date_ = s;
         return s;
       }
     }
@@ -274,40 +274,40 @@ public final class ChatProto {
      * Data de envio
      * </pre>
      *
-     * <code>optional string data = 2;</code>
+     * <code>optional string date = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getDataBytes() {
-      java.lang.Object ref = data_;
+        getDateBytes() {
+      java.lang.Object ref = date_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        data_ = b;
+        date_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int HORA_FIELD_NUMBER = 3;
-    private volatile java.lang.Object hora_;
+    public static final int TIME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object time_;
     /**
      * <pre>
      * Hora de envio
      * </pre>
      *
-     * <code>optional string hora = 3;</code>
+     * <code>optional string time = 3;</code>
      */
-    public java.lang.String getHora() {
-      java.lang.Object ref = hora_;
+    public java.lang.String getTime() {
+      java.lang.Object ref = time_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        hora_ = s;
+        time_ = s;
         return s;
       }
     }
@@ -316,40 +316,40 @@ public final class ChatProto {
      * Hora de envio
      * </pre>
      *
-     * <code>optional string hora = 3;</code>
+     * <code>optional string time = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getHoraBytes() {
-      java.lang.Object ref = hora_;
+        getTimeBytes() {
+      java.lang.Object ref = time_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        hora_ = b;
+        time_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int GRUPO_FIELD_NUMBER = 4;
-    private volatile java.lang.Object grupo_;
+    public static final int GROUP_FIELD_NUMBER = 4;
+    private volatile java.lang.Object group_;
     /**
      * <pre>
      * Informa o nome do grupo, se a mensagem for para um grupo
      * </pre>
      *
-     * <code>optional string grupo = 4;</code>
+     * <code>optional string group = 4;</code>
      */
-    public java.lang.String getGrupo() {
-      java.lang.Object ref = grupo_;
+    public java.lang.String getGroup() {
+      java.lang.Object ref = group_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        grupo_ = s;
+        group_ = s;
         return s;
       }
     }
@@ -358,41 +358,41 @@ public final class ChatProto {
      * Informa o nome do grupo, se a mensagem for para um grupo
      * </pre>
      *
-     * <code>optional string grupo = 4;</code>
+     * <code>optional string group = 4;</code>
      */
     public com.google.protobuf.ByteString
-        getGrupoBytes() {
-      java.lang.Object ref = grupo_;
+        getGroupBytes() {
+      java.lang.Object ref = group_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        grupo_ = b;
+        group_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int CONTEUDO_FIELD_NUMBER = 5;
-    private br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo conteudo_;
+    public static final int CONTENT_FIELD_NUMBER = 5;
+    private br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content content_;
     /**
-     * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+     * <code>optional .ChatRabbitMQ.Content content = 5;</code>
      */
-    public boolean hasConteudo() {
-      return conteudo_ != null;
+    public boolean hasContent() {
+      return content_ != null;
     }
     /**
-     * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+     * <code>optional .ChatRabbitMQ.Content content = 5;</code>
      */
-    public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo getConteudo() {
-      return conteudo_ == null ? br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.getDefaultInstance() : conteudo_;
+    public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content getContent() {
+      return content_ == null ? br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.getDefaultInstance() : content_;
     }
     /**
-     * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+     * <code>optional .ChatRabbitMQ.Content content = 5;</code>
      */
-    public br.ufs.dcomp.ChatRabbitMQ.ChatProto.ConteudoOrBuilder getConteudoOrBuilder() {
-      return getConteudo();
+    public br.ufs.dcomp.ChatRabbitMQ.ChatProto.ContentOrBuilder getContentOrBuilder() {
+      return getContent();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -407,20 +407,20 @@ public final class ChatProto {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getEmissorBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, emissor_);
+      if (!getSenderBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, sender_);
       }
-      if (!getDataBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, data_);
+      if (!getDateBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, date_);
       }
-      if (!getHoraBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, hora_);
+      if (!getTimeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, time_);
       }
-      if (!getGrupoBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, grupo_);
+      if (!getGroupBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, group_);
       }
-      if (conteudo_ != null) {
-        output.writeMessage(5, getConteudo());
+      if (content_ != null) {
+        output.writeMessage(5, getContent());
       }
     }
 
@@ -429,21 +429,21 @@ public final class ChatProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!getEmissorBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, emissor_);
+      if (!getSenderBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, sender_);
       }
-      if (!getDataBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, data_);
+      if (!getDateBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, date_);
       }
-      if (!getHoraBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, hora_);
+      if (!getTimeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, time_);
       }
-      if (!getGrupoBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, grupo_);
+      if (!getGroupBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, group_);
       }
-      if (conteudo_ != null) {
+      if (content_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, getConteudo());
+          .computeMessageSize(5, getContent());
       }
       memoizedSize = size;
       return size;
@@ -455,24 +455,24 @@ public final class ChatProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem)) {
+      if (!(obj instanceof br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message)) {
         return super.equals(obj);
       }
-      br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem other = (br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem) obj;
+      br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message other = (br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message) obj;
 
       boolean result = true;
-      result = result && getEmissor()
-          .equals(other.getEmissor());
-      result = result && getData()
-          .equals(other.getData());
-      result = result && getHora()
-          .equals(other.getHora());
-      result = result && getGrupo()
-          .equals(other.getGrupo());
-      result = result && (hasConteudo() == other.hasConteudo());
-      if (hasConteudo()) {
-        result = result && getConteudo()
-            .equals(other.getConteudo());
+      result = result && getSender()
+          .equals(other.getSender());
+      result = result && getDate()
+          .equals(other.getDate());
+      result = result && getTime()
+          .equals(other.getTime());
+      result = result && getGroup()
+          .equals(other.getGroup());
+      result = result && (hasContent() == other.hasContent());
+      if (hasContent()) {
+        result = result && getContent()
+            .equals(other.getContent());
       }
       return result;
     }
@@ -484,75 +484,75 @@ public final class ChatProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + EMISSOR_FIELD_NUMBER;
-      hash = (53 * hash) + getEmissor().hashCode();
-      hash = (37 * hash) + DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getData().hashCode();
-      hash = (37 * hash) + HORA_FIELD_NUMBER;
-      hash = (53 * hash) + getHora().hashCode();
-      hash = (37 * hash) + GRUPO_FIELD_NUMBER;
-      hash = (53 * hash) + getGrupo().hashCode();
-      if (hasConteudo()) {
-        hash = (37 * hash) + CONTEUDO_FIELD_NUMBER;
-        hash = (53 * hash) + getConteudo().hashCode();
+      hash = (37 * hash) + SENDER_FIELD_NUMBER;
+      hash = (53 * hash) + getSender().hashCode();
+      hash = (37 * hash) + DATE_FIELD_NUMBER;
+      hash = (53 * hash) + getDate().hashCode();
+      hash = (37 * hash) + TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getTime().hashCode();
+      hash = (37 * hash) + GROUP_FIELD_NUMBER;
+      hash = (53 * hash) + getGroup().hashCode();
+      if (hasContent()) {
+        hash = (37 * hash) + CONTENT_FIELD_NUMBER;
+        hash = (53 * hash) + getContent().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseFrom(byte[] data)
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseFrom(java.io.InputStream input)
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseDelimitedFrom(java.io.InputStream input)
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseDelimitedFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -564,7 +564,7 @@ public final class ChatProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem prototype) {
+    public static Builder newBuilder(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -579,25 +579,25 @@ public final class ChatProto {
       return builder;
     }
     /**
-     * Protobuf type {@code ChatRabbitMQ.Mensagem}
+     * Protobuf type {@code ChatRabbitMQ.Message}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ChatRabbitMQ.Mensagem)
-        br.ufs.dcomp.ChatRabbitMQ.ChatProto.MensagemOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ChatRabbitMQ.Message)
+        br.ufs.dcomp.ChatRabbitMQ.ChatProto.MessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Mensagem_descriptor;
+        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Message_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Mensagem_fieldAccessorTable
+        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Message_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem.class, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem.Builder.class);
+                br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message.class, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message.Builder.class);
       }
 
-      // Construct using br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem.newBuilder()
+      // Construct using br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -614,50 +614,50 @@ public final class ChatProto {
       }
       public Builder clear() {
         super.clear();
-        emissor_ = "";
+        sender_ = "";
 
-        data_ = "";
+        date_ = "";
 
-        hora_ = "";
+        time_ = "";
 
-        grupo_ = "";
+        group_ = "";
 
-        if (conteudoBuilder_ == null) {
-          conteudo_ = null;
+        if (contentBuilder_ == null) {
+          content_ = null;
         } else {
-          conteudo_ = null;
-          conteudoBuilder_ = null;
+          content_ = null;
+          contentBuilder_ = null;
         }
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Mensagem_descriptor;
+        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Message_descriptor;
       }
 
-      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem getDefaultInstanceForType() {
-        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem.getDefaultInstance();
+      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message getDefaultInstanceForType() {
+        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message.getDefaultInstance();
       }
 
-      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem build() {
-        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem result = buildPartial();
+      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message build() {
+        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem buildPartial() {
-        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem result = new br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem(this);
-        result.emissor_ = emissor_;
-        result.data_ = data_;
-        result.hora_ = hora_;
-        result.grupo_ = grupo_;
-        if (conteudoBuilder_ == null) {
-          result.conteudo_ = conteudo_;
+      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message buildPartial() {
+        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message result = new br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message(this);
+        result.sender_ = sender_;
+        result.date_ = date_;
+        result.time_ = time_;
+        result.group_ = group_;
+        if (contentBuilder_ == null) {
+          result.content_ = content_;
         } else {
-          result.conteudo_ = conteudoBuilder_.build();
+          result.content_ = contentBuilder_.build();
         }
         onBuilt();
         return result;
@@ -690,34 +690,34 @@ public final class ChatProto {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem) {
-          return mergeFrom((br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem)other);
+        if (other instanceof br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message) {
+          return mergeFrom((br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem other) {
-        if (other == br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem.getDefaultInstance()) return this;
-        if (!other.getEmissor().isEmpty()) {
-          emissor_ = other.emissor_;
+      public Builder mergeFrom(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message other) {
+        if (other == br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message.getDefaultInstance()) return this;
+        if (!other.getSender().isEmpty()) {
+          sender_ = other.sender_;
           onChanged();
         }
-        if (!other.getData().isEmpty()) {
-          data_ = other.data_;
+        if (!other.getDate().isEmpty()) {
+          date_ = other.date_;
           onChanged();
         }
-        if (!other.getHora().isEmpty()) {
-          hora_ = other.hora_;
+        if (!other.getTime().isEmpty()) {
+          time_ = other.time_;
           onChanged();
         }
-        if (!other.getGrupo().isEmpty()) {
-          grupo_ = other.grupo_;
+        if (!other.getGroup().isEmpty()) {
+          group_ = other.group_;
           onChanged();
         }
-        if (other.hasConteudo()) {
-          mergeConteudo(other.getConteudo());
+        if (other.hasContent()) {
+          mergeContent(other.getContent());
         }
         onChanged();
         return this;
@@ -731,11 +731,11 @@ public final class ChatProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem parsedMessage = null;
+        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem) e.getUnfinishedMessage();
+          parsedMessage = (br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -745,21 +745,21 @@ public final class ChatProto {
         return this;
       }
 
-      private java.lang.Object emissor_ = "";
+      private java.lang.Object sender_ = "";
       /**
        * <pre>
        * Nome do emissor
        * </pre>
        *
-       * <code>optional string emissor = 1;</code>
+       * <code>optional string sender = 1;</code>
        */
-      public java.lang.String getEmissor() {
-        java.lang.Object ref = emissor_;
+      public java.lang.String getSender() {
+        java.lang.Object ref = sender_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          emissor_ = s;
+          sender_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -770,16 +770,16 @@ public final class ChatProto {
        * Nome do emissor
        * </pre>
        *
-       * <code>optional string emissor = 1;</code>
+       * <code>optional string sender = 1;</code>
        */
       public com.google.protobuf.ByteString
-          getEmissorBytes() {
-        java.lang.Object ref = emissor_;
+          getSenderBytes() {
+        java.lang.Object ref = sender_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          emissor_ = b;
+          sender_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -790,15 +790,15 @@ public final class ChatProto {
        * Nome do emissor
        * </pre>
        *
-       * <code>optional string emissor = 1;</code>
+       * <code>optional string sender = 1;</code>
        */
-      public Builder setEmissor(
+      public Builder setSender(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        emissor_ = value;
+        sender_ = value;
         onChanged();
         return this;
       }
@@ -807,11 +807,11 @@ public final class ChatProto {
        * Nome do emissor
        * </pre>
        *
-       * <code>optional string emissor = 1;</code>
+       * <code>optional string sender = 1;</code>
        */
-      public Builder clearEmissor() {
+      public Builder clearSender() {
         
-        emissor_ = getDefaultInstance().getEmissor();
+        sender_ = getDefaultInstance().getSender();
         onChanged();
         return this;
       }
@@ -820,35 +820,35 @@ public final class ChatProto {
        * Nome do emissor
        * </pre>
        *
-       * <code>optional string emissor = 1;</code>
+       * <code>optional string sender = 1;</code>
        */
-      public Builder setEmissorBytes(
+      public Builder setSenderBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        emissor_ = value;
+        sender_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object data_ = "";
+      private java.lang.Object date_ = "";
       /**
        * <pre>
        * Data de envio
        * </pre>
        *
-       * <code>optional string data = 2;</code>
+       * <code>optional string date = 2;</code>
        */
-      public java.lang.String getData() {
-        java.lang.Object ref = data_;
+      public java.lang.String getDate() {
+        java.lang.Object ref = date_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          data_ = s;
+          date_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -859,16 +859,16 @@ public final class ChatProto {
        * Data de envio
        * </pre>
        *
-       * <code>optional string data = 2;</code>
+       * <code>optional string date = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getDataBytes() {
-        java.lang.Object ref = data_;
+          getDateBytes() {
+        java.lang.Object ref = date_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          data_ = b;
+          date_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -879,15 +879,15 @@ public final class ChatProto {
        * Data de envio
        * </pre>
        *
-       * <code>optional string data = 2;</code>
+       * <code>optional string date = 2;</code>
        */
-      public Builder setData(
+      public Builder setDate(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        data_ = value;
+        date_ = value;
         onChanged();
         return this;
       }
@@ -896,11 +896,11 @@ public final class ChatProto {
        * Data de envio
        * </pre>
        *
-       * <code>optional string data = 2;</code>
+       * <code>optional string date = 2;</code>
        */
-      public Builder clearData() {
+      public Builder clearDate() {
         
-        data_ = getDefaultInstance().getData();
+        date_ = getDefaultInstance().getDate();
         onChanged();
         return this;
       }
@@ -909,35 +909,35 @@ public final class ChatProto {
        * Data de envio
        * </pre>
        *
-       * <code>optional string data = 2;</code>
+       * <code>optional string date = 2;</code>
        */
-      public Builder setDataBytes(
+      public Builder setDateBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        data_ = value;
+        date_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object hora_ = "";
+      private java.lang.Object time_ = "";
       /**
        * <pre>
        * Hora de envio
        * </pre>
        *
-       * <code>optional string hora = 3;</code>
+       * <code>optional string time = 3;</code>
        */
-      public java.lang.String getHora() {
-        java.lang.Object ref = hora_;
+      public java.lang.String getTime() {
+        java.lang.Object ref = time_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          hora_ = s;
+          time_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -948,16 +948,16 @@ public final class ChatProto {
        * Hora de envio
        * </pre>
        *
-       * <code>optional string hora = 3;</code>
+       * <code>optional string time = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getHoraBytes() {
-        java.lang.Object ref = hora_;
+          getTimeBytes() {
+        java.lang.Object ref = time_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          hora_ = b;
+          time_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -968,15 +968,15 @@ public final class ChatProto {
        * Hora de envio
        * </pre>
        *
-       * <code>optional string hora = 3;</code>
+       * <code>optional string time = 3;</code>
        */
-      public Builder setHora(
+      public Builder setTime(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        hora_ = value;
+        time_ = value;
         onChanged();
         return this;
       }
@@ -985,11 +985,11 @@ public final class ChatProto {
        * Hora de envio
        * </pre>
        *
-       * <code>optional string hora = 3;</code>
+       * <code>optional string time = 3;</code>
        */
-      public Builder clearHora() {
+      public Builder clearTime() {
         
-        hora_ = getDefaultInstance().getHora();
+        time_ = getDefaultInstance().getTime();
         onChanged();
         return this;
       }
@@ -998,35 +998,35 @@ public final class ChatProto {
        * Hora de envio
        * </pre>
        *
-       * <code>optional string hora = 3;</code>
+       * <code>optional string time = 3;</code>
        */
-      public Builder setHoraBytes(
+      public Builder setTimeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        hora_ = value;
+        time_ = value;
         onChanged();
         return this;
       }
 
-      private java.lang.Object grupo_ = "";
+      private java.lang.Object group_ = "";
       /**
        * <pre>
        * Informa o nome do grupo, se a mensagem for para um grupo
        * </pre>
        *
-       * <code>optional string grupo = 4;</code>
+       * <code>optional string group = 4;</code>
        */
-      public java.lang.String getGrupo() {
-        java.lang.Object ref = grupo_;
+      public java.lang.String getGroup() {
+        java.lang.Object ref = group_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          grupo_ = s;
+          group_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1037,16 +1037,16 @@ public final class ChatProto {
        * Informa o nome do grupo, se a mensagem for para um grupo
        * </pre>
        *
-       * <code>optional string grupo = 4;</code>
+       * <code>optional string group = 4;</code>
        */
       public com.google.protobuf.ByteString
-          getGrupoBytes() {
-        java.lang.Object ref = grupo_;
+          getGroupBytes() {
+        java.lang.Object ref = group_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          grupo_ = b;
+          group_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -1057,15 +1057,15 @@ public final class ChatProto {
        * Informa o nome do grupo, se a mensagem for para um grupo
        * </pre>
        *
-       * <code>optional string grupo = 4;</code>
+       * <code>optional string group = 4;</code>
        */
-      public Builder setGrupo(
+      public Builder setGroup(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        grupo_ = value;
+        group_ = value;
         onChanged();
         return this;
       }
@@ -1074,11 +1074,11 @@ public final class ChatProto {
        * Informa o nome do grupo, se a mensagem for para um grupo
        * </pre>
        *
-       * <code>optional string grupo = 4;</code>
+       * <code>optional string group = 4;</code>
        */
-      public Builder clearGrupo() {
+      public Builder clearGroup() {
         
-        grupo_ = getDefaultInstance().getGrupo();
+        group_ = getDefaultInstance().getGroup();
         onChanged();
         return this;
       }
@@ -1087,135 +1087,135 @@ public final class ChatProto {
        * Informa o nome do grupo, se a mensagem for para um grupo
        * </pre>
        *
-       * <code>optional string grupo = 4;</code>
+       * <code>optional string group = 4;</code>
        */
-      public Builder setGrupoBytes(
+      public Builder setGroupBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        grupo_ = value;
+        group_ = value;
         onChanged();
         return this;
       }
 
-      private br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo conteudo_ = null;
+      private br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content content_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.Builder, br.ufs.dcomp.ChatRabbitMQ.ChatProto.ConteudoOrBuilder> conteudoBuilder_;
+          br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.Builder, br.ufs.dcomp.ChatRabbitMQ.ChatProto.ContentOrBuilder> contentBuilder_;
       /**
-       * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+       * <code>optional .ChatRabbitMQ.Content content = 5;</code>
        */
-      public boolean hasConteudo() {
-        return conteudoBuilder_ != null || conteudo_ != null;
+      public boolean hasContent() {
+        return contentBuilder_ != null || content_ != null;
       }
       /**
-       * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+       * <code>optional .ChatRabbitMQ.Content content = 5;</code>
        */
-      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo getConteudo() {
-        if (conteudoBuilder_ == null) {
-          return conteudo_ == null ? br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.getDefaultInstance() : conteudo_;
+      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content getContent() {
+        if (contentBuilder_ == null) {
+          return content_ == null ? br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.getDefaultInstance() : content_;
         } else {
-          return conteudoBuilder_.getMessage();
+          return contentBuilder_.getMessage();
         }
       }
       /**
-       * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+       * <code>optional .ChatRabbitMQ.Content content = 5;</code>
        */
-      public Builder setConteudo(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo value) {
-        if (conteudoBuilder_ == null) {
+      public Builder setContent(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content value) {
+        if (contentBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          conteudo_ = value;
+          content_ = value;
           onChanged();
         } else {
-          conteudoBuilder_.setMessage(value);
+          contentBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+       * <code>optional .ChatRabbitMQ.Content content = 5;</code>
        */
-      public Builder setConteudo(
-          br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.Builder builderForValue) {
-        if (conteudoBuilder_ == null) {
-          conteudo_ = builderForValue.build();
+      public Builder setContent(
+          br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.Builder builderForValue) {
+        if (contentBuilder_ == null) {
+          content_ = builderForValue.build();
           onChanged();
         } else {
-          conteudoBuilder_.setMessage(builderForValue.build());
+          contentBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+       * <code>optional .ChatRabbitMQ.Content content = 5;</code>
        */
-      public Builder mergeConteudo(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo value) {
-        if (conteudoBuilder_ == null) {
-          if (conteudo_ != null) {
-            conteudo_ =
-              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.newBuilder(conteudo_).mergeFrom(value).buildPartial();
+      public Builder mergeContent(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content value) {
+        if (contentBuilder_ == null) {
+          if (content_ != null) {
+            content_ =
+              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.newBuilder(content_).mergeFrom(value).buildPartial();
           } else {
-            conteudo_ = value;
+            content_ = value;
           }
           onChanged();
         } else {
-          conteudoBuilder_.mergeFrom(value);
+          contentBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+       * <code>optional .ChatRabbitMQ.Content content = 5;</code>
        */
-      public Builder clearConteudo() {
-        if (conteudoBuilder_ == null) {
-          conteudo_ = null;
+      public Builder clearContent() {
+        if (contentBuilder_ == null) {
+          content_ = null;
           onChanged();
         } else {
-          conteudo_ = null;
-          conteudoBuilder_ = null;
+          content_ = null;
+          contentBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+       * <code>optional .ChatRabbitMQ.Content content = 5;</code>
        */
-      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.Builder getConteudoBuilder() {
+      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.Builder getContentBuilder() {
         
         onChanged();
-        return getConteudoFieldBuilder().getBuilder();
+        return getContentFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+       * <code>optional .ChatRabbitMQ.Content content = 5;</code>
        */
-      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.ConteudoOrBuilder getConteudoOrBuilder() {
-        if (conteudoBuilder_ != null) {
-          return conteudoBuilder_.getMessageOrBuilder();
+      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.ContentOrBuilder getContentOrBuilder() {
+        if (contentBuilder_ != null) {
+          return contentBuilder_.getMessageOrBuilder();
         } else {
-          return conteudo_ == null ?
-              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.getDefaultInstance() : conteudo_;
+          return content_ == null ?
+              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.getDefaultInstance() : content_;
         }
       }
       /**
-       * <code>optional .ChatRabbitMQ.Conteudo conteudo = 5;</code>
+       * <code>optional .ChatRabbitMQ.Content content = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.Builder, br.ufs.dcomp.ChatRabbitMQ.ChatProto.ConteudoOrBuilder> 
-          getConteudoFieldBuilder() {
-        if (conteudoBuilder_ == null) {
-          conteudoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.Builder, br.ufs.dcomp.ChatRabbitMQ.ChatProto.ConteudoOrBuilder>(
-                  getConteudo(),
+          br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.Builder, br.ufs.dcomp.ChatRabbitMQ.ChatProto.ContentOrBuilder> 
+          getContentFieldBuilder() {
+        if (contentBuilder_ == null) {
+          contentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.Builder, br.ufs.dcomp.ChatRabbitMQ.ChatProto.ContentOrBuilder>(
+                  getContent(),
                   getParentForChildren(),
                   isClean());
-          conteudo_ = null;
+          content_ = null;
         }
-        return conteudoBuilder_;
+        return contentBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1228,46 +1228,46 @@ public final class ChatProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ChatRabbitMQ.Mensagem)
+      // @@protoc_insertion_point(builder_scope:ChatRabbitMQ.Message)
     }
 
-    // @@protoc_insertion_point(class_scope:ChatRabbitMQ.Mensagem)
-    private static final br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ChatRabbitMQ.Message)
+    private static final br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem();
+      DEFAULT_INSTANCE = new br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message();
     }
 
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem getDefaultInstance() {
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Mensagem>
-        PARSER = new com.google.protobuf.AbstractParser<Mensagem>() {
-      public Mensagem parsePartialFrom(
+    private static final com.google.protobuf.Parser<Message>
+        PARSER = new com.google.protobuf.AbstractParser<Message>() {
+      public Message parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Mensagem(input, extensionRegistry);
+          return new Message(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Mensagem> parser() {
+    public static com.google.protobuf.Parser<Message> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Mensagem> getParserForType() {
+    public com.google.protobuf.Parser<Message> getParserForType() {
       return PARSER;
     }
 
-    public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Mensagem getDefaultInstanceForType() {
+    public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Message getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface ConteudoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ChatRabbitMQ.Conteudo)
+  public interface ContentOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ChatRabbitMQ.Content)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1275,61 +1275,61 @@ public final class ChatProto {
      * Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
      * </pre>
      *
-     * <code>optional string tipo = 1;</code>
+     * <code>optional string type = 1;</code>
      */
-    java.lang.String getTipo();
+    java.lang.String getType();
     /**
      * <pre>
      * Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
      * </pre>
      *
-     * <code>optional string tipo = 1;</code>
+     * <code>optional string type = 1;</code>
      */
     com.google.protobuf.ByteString
-        getTipoBytes();
+        getTypeBytes();
 
     /**
      * <pre>
      * Sequência de bytes que compõe o corpo da mensagem
      * </pre>
      *
-     * <code>optional bytes corpo = 2;</code>
+     * <code>optional bytes body = 2;</code>
      */
-    com.google.protobuf.ByteString getCorpo();
+    com.google.protobuf.ByteString getBody();
 
     /**
      * <pre>
      * Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
      * </pre>
      *
-     * <code>optional string nome = 3;</code>
+     * <code>optional string name = 3;</code>
      */
-    java.lang.String getNome();
+    java.lang.String getName();
     /**
      * <pre>
      * Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
      * </pre>
      *
-     * <code>optional string nome = 3;</code>
+     * <code>optional string name = 3;</code>
      */
     com.google.protobuf.ByteString
-        getNomeBytes();
+        getNameBytes();
   }
   /**
-   * Protobuf type {@code ChatRabbitMQ.Conteudo}
+   * Protobuf type {@code ChatRabbitMQ.Content}
    */
-  public  static final class Conteudo extends
+  public  static final class Content extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ChatRabbitMQ.Conteudo)
-      ConteudoOrBuilder {
-    // Use Conteudo.newBuilder() to construct.
-    private Conteudo(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:ChatRabbitMQ.Content)
+      ContentOrBuilder {
+    // Use Content.newBuilder() to construct.
+    private Content(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private Conteudo() {
-      tipo_ = "";
-      corpo_ = com.google.protobuf.ByteString.EMPTY;
-      nome_ = "";
+    private Content() {
+      type_ = "";
+      body_ = com.google.protobuf.ByteString.EMPTY;
+      name_ = "";
     }
 
     @java.lang.Override
@@ -1337,7 +1337,7 @@ public final class ChatProto {
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
-    private Conteudo(
+    private Content(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1360,18 +1360,18 @@ public final class ChatProto {
             case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              tipo_ = s;
+              type_ = s;
               break;
             }
             case 18: {
 
-              corpo_ = input.readBytes();
+              body_ = input.readBytes();
               break;
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              nome_ = s;
+              name_ = s;
               break;
             }
           }
@@ -1387,34 +1387,34 @@ public final class ChatProto {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Conteudo_descriptor;
+      return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Content_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Conteudo_fieldAccessorTable
+      return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Content_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.class, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.Builder.class);
+              br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.class, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.Builder.class);
     }
 
-    public static final int TIPO_FIELD_NUMBER = 1;
-    private volatile java.lang.Object tipo_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object type_;
     /**
      * <pre>
      * Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
      * </pre>
      *
-     * <code>optional string tipo = 1;</code>
+     * <code>optional string type = 1;</code>
      */
-    public java.lang.String getTipo() {
-      java.lang.Object ref = tipo_;
+    public java.lang.String getType() {
+      java.lang.Object ref = type_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        tipo_ = s;
+        type_ = s;
         return s;
       }
     }
@@ -1423,53 +1423,53 @@ public final class ChatProto {
      * Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
      * </pre>
      *
-     * <code>optional string tipo = 1;</code>
+     * <code>optional string type = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getTipoBytes() {
-      java.lang.Object ref = tipo_;
+        getTypeBytes() {
+      java.lang.Object ref = type_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        tipo_ = b;
+        type_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    public static final int CORPO_FIELD_NUMBER = 2;
-    private com.google.protobuf.ByteString corpo_;
+    public static final int BODY_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString body_;
     /**
      * <pre>
      * Sequência de bytes que compõe o corpo da mensagem
      * </pre>
      *
-     * <code>optional bytes corpo = 2;</code>
+     * <code>optional bytes body = 2;</code>
      */
-    public com.google.protobuf.ByteString getCorpo() {
-      return corpo_;
+    public com.google.protobuf.ByteString getBody() {
+      return body_;
     }
 
-    public static final int NOME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object nome_;
+    public static final int NAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object name_;
     /**
      * <pre>
      * Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
      * </pre>
      *
-     * <code>optional string nome = 3;</code>
+     * <code>optional string name = 3;</code>
      */
-    public java.lang.String getNome() {
-      java.lang.Object ref = nome_;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        nome_ = s;
+        name_ = s;
         return s;
       }
     }
@@ -1478,16 +1478,16 @@ public final class ChatProto {
      * Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
      * </pre>
      *
-     * <code>optional string nome = 3;</code>
+     * <code>optional string name = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getNomeBytes() {
-      java.lang.Object ref = nome_;
+        getNameBytes() {
+      java.lang.Object ref = name_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        nome_ = b;
+        name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1506,14 +1506,14 @@ public final class ChatProto {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getTipoBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tipo_);
+      if (!getTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
       }
-      if (!corpo_.isEmpty()) {
-        output.writeBytes(2, corpo_);
+      if (!body_.isEmpty()) {
+        output.writeBytes(2, body_);
       }
-      if (!getNomeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, nome_);
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
       }
     }
 
@@ -1522,15 +1522,15 @@ public final class ChatProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!getTipoBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tipo_);
+      if (!getTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
       }
-      if (!corpo_.isEmpty()) {
+      if (!body_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, corpo_);
+          .computeBytesSize(2, body_);
       }
-      if (!getNomeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, nome_);
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
       }
       memoizedSize = size;
       return size;
@@ -1542,18 +1542,18 @@ public final class ChatProto {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo)) {
+      if (!(obj instanceof br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content)) {
         return super.equals(obj);
       }
-      br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo other = (br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo) obj;
+      br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content other = (br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content) obj;
 
       boolean result = true;
-      result = result && getTipo()
-          .equals(other.getTipo());
-      result = result && getCorpo()
-          .equals(other.getCorpo());
-      result = result && getNome()
-          .equals(other.getNome());
+      result = result && getType()
+          .equals(other.getType());
+      result = result && getBody()
+          .equals(other.getBody());
+      result = result && getName()
+          .equals(other.getName());
       return result;
     }
 
@@ -1564,69 +1564,69 @@ public final class ChatProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + TIPO_FIELD_NUMBER;
-      hash = (53 * hash) + getTipo().hashCode();
-      hash = (37 * hash) + CORPO_FIELD_NUMBER;
-      hash = (53 * hash) + getCorpo().hashCode();
-      hash = (37 * hash) + NOME_FIELD_NUMBER;
-      hash = (53 * hash) + getNome().hashCode();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType().hashCode();
+      hash = (37 * hash) + BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getBody().hashCode();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseFrom(byte[] data)
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseFrom(java.io.InputStream input)
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseDelimitedFrom(java.io.InputStream input)
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseDelimitedFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parseFrom(
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1638,7 +1638,7 @@ public final class ChatProto {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo prototype) {
+    public static Builder newBuilder(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -1653,25 +1653,25 @@ public final class ChatProto {
       return builder;
     }
     /**
-     * Protobuf type {@code ChatRabbitMQ.Conteudo}
+     * Protobuf type {@code ChatRabbitMQ.Content}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ChatRabbitMQ.Conteudo)
-        br.ufs.dcomp.ChatRabbitMQ.ChatProto.ConteudoOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ChatRabbitMQ.Content)
+        br.ufs.dcomp.ChatRabbitMQ.ChatProto.ContentOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Conteudo_descriptor;
+        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Content_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Conteudo_fieldAccessorTable
+        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Content_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.class, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.Builder.class);
+                br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.class, br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.Builder.class);
       }
 
-      // Construct using br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.newBuilder()
+      // Construct using br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1688,37 +1688,37 @@ public final class ChatProto {
       }
       public Builder clear() {
         super.clear();
-        tipo_ = "";
+        type_ = "";
 
-        corpo_ = com.google.protobuf.ByteString.EMPTY;
+        body_ = com.google.protobuf.ByteString.EMPTY;
 
-        nome_ = "";
+        name_ = "";
 
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Conteudo_descriptor;
+        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.internal_static_ChatRabbitMQ_Content_descriptor;
       }
 
-      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo getDefaultInstanceForType() {
-        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.getDefaultInstance();
+      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content getDefaultInstanceForType() {
+        return br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.getDefaultInstance();
       }
 
-      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo build() {
-        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo result = buildPartial();
+      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content build() {
+        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo buildPartial() {
-        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo result = new br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo(this);
-        result.tipo_ = tipo_;
-        result.corpo_ = corpo_;
-        result.nome_ = nome_;
+      public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content buildPartial() {
+        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content result = new br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content(this);
+        result.type_ = type_;
+        result.body_ = body_;
+        result.name_ = name_;
         onBuilt();
         return result;
       }
@@ -1750,25 +1750,25 @@ public final class ChatProto {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo) {
-          return mergeFrom((br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo)other);
+        if (other instanceof br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content) {
+          return mergeFrom((br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo other) {
-        if (other == br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo.getDefaultInstance()) return this;
-        if (!other.getTipo().isEmpty()) {
-          tipo_ = other.tipo_;
+      public Builder mergeFrom(br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content other) {
+        if (other == br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content.getDefaultInstance()) return this;
+        if (!other.getType().isEmpty()) {
+          type_ = other.type_;
           onChanged();
         }
-        if (other.getCorpo() != com.google.protobuf.ByteString.EMPTY) {
-          setCorpo(other.getCorpo());
+        if (other.getBody() != com.google.protobuf.ByteString.EMPTY) {
+          setBody(other.getBody());
         }
-        if (!other.getNome().isEmpty()) {
-          nome_ = other.nome_;
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
           onChanged();
         }
         onChanged();
@@ -1783,11 +1783,11 @@ public final class ChatProto {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo parsedMessage = null;
+        br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo) e.getUnfinishedMessage();
+          parsedMessage = (br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1797,21 +1797,21 @@ public final class ChatProto {
         return this;
       }
 
-      private java.lang.Object tipo_ = "";
+      private java.lang.Object type_ = "";
       /**
        * <pre>
        * Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
        * </pre>
        *
-       * <code>optional string tipo = 1;</code>
+       * <code>optional string type = 1;</code>
        */
-      public java.lang.String getTipo() {
-        java.lang.Object ref = tipo_;
+      public java.lang.String getType() {
+        java.lang.Object ref = type_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          tipo_ = s;
+          type_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1822,16 +1822,16 @@ public final class ChatProto {
        * Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
        * </pre>
        *
-       * <code>optional string tipo = 1;</code>
+       * <code>optional string type = 1;</code>
        */
       public com.google.protobuf.ByteString
-          getTipoBytes() {
-        java.lang.Object ref = tipo_;
+          getTypeBytes() {
+        java.lang.Object ref = type_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          tipo_ = b;
+          type_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -1842,15 +1842,15 @@ public final class ChatProto {
        * Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
        * </pre>
        *
-       * <code>optional string tipo = 1;</code>
+       * <code>optional string type = 1;</code>
        */
-      public Builder setTipo(
+      public Builder setType(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        tipo_ = value;
+        type_ = value;
         onChanged();
         return this;
       }
@@ -1859,11 +1859,11 @@ public final class ChatProto {
        * Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
        * </pre>
        *
-       * <code>optional string tipo = 1;</code>
+       * <code>optional string type = 1;</code>
        */
-      public Builder clearTipo() {
+      public Builder clearType() {
         
-        tipo_ = getDefaultInstance().getTipo();
+        type_ = getDefaultInstance().getType();
         onChanged();
         return this;
       }
@@ -1872,44 +1872,44 @@ public final class ChatProto {
        * Tipo do conteúdo no padrão de tipos MIME. Exemplos: "text/plain", "image/png" 
        * </pre>
        *
-       * <code>optional string tipo = 1;</code>
+       * <code>optional string type = 1;</code>
        */
-      public Builder setTipoBytes(
+      public Builder setTypeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        tipo_ = value;
+        type_ = value;
         onChanged();
         return this;
       }
 
-      private com.google.protobuf.ByteString corpo_ = com.google.protobuf.ByteString.EMPTY;
+      private com.google.protobuf.ByteString body_ = com.google.protobuf.ByteString.EMPTY;
       /**
        * <pre>
        * Sequência de bytes que compõe o corpo da mensagem
        * </pre>
        *
-       * <code>optional bytes corpo = 2;</code>
+       * <code>optional bytes body = 2;</code>
        */
-      public com.google.protobuf.ByteString getCorpo() {
-        return corpo_;
+      public com.google.protobuf.ByteString getBody() {
+        return body_;
       }
       /**
        * <pre>
        * Sequência de bytes que compõe o corpo da mensagem
        * </pre>
        *
-       * <code>optional bytes corpo = 2;</code>
+       * <code>optional bytes body = 2;</code>
        */
-      public Builder setCorpo(com.google.protobuf.ByteString value) {
+      public Builder setBody(com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        corpo_ = value;
+        body_ = value;
         onChanged();
         return this;
       }
@@ -1918,30 +1918,30 @@ public final class ChatProto {
        * Sequência de bytes que compõe o corpo da mensagem
        * </pre>
        *
-       * <code>optional bytes corpo = 2;</code>
+       * <code>optional bytes body = 2;</code>
        */
-      public Builder clearCorpo() {
+      public Builder clearBody() {
         
-        corpo_ = getDefaultInstance().getCorpo();
+        body_ = getDefaultInstance().getBody();
         onChanged();
         return this;
       }
 
-      private java.lang.Object nome_ = "";
+      private java.lang.Object name_ = "";
       /**
        * <pre>
        * Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
        * </pre>
        *
-       * <code>optional string nome = 3;</code>
+       * <code>optional string name = 3;</code>
        */
-      public java.lang.String getNome() {
-        java.lang.Object ref = nome_;
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          nome_ = s;
+          name_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1952,16 +1952,16 @@ public final class ChatProto {
        * Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
        * </pre>
        *
-       * <code>optional string nome = 3;</code>
+       * <code>optional string name = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getNomeBytes() {
-        java.lang.Object ref = nome_;
+          getNameBytes() {
+        java.lang.Object ref = name_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          nome_ = b;
+          name_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
@@ -1972,15 +1972,15 @@ public final class ChatProto {
        * Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
        * </pre>
        *
-       * <code>optional string nome = 3;</code>
+       * <code>optional string name = 3;</code>
        */
-      public Builder setNome(
+      public Builder setName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        nome_ = value;
+        name_ = value;
         onChanged();
         return this;
       }
@@ -1989,11 +1989,11 @@ public final class ChatProto {
        * Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
        * </pre>
        *
-       * <code>optional string nome = 3;</code>
+       * <code>optional string name = 3;</code>
        */
-      public Builder clearNome() {
+      public Builder clearName() {
         
-        nome_ = getDefaultInstance().getNome();
+        name_ = getDefaultInstance().getName();
         onChanged();
         return this;
       }
@@ -2002,16 +2002,16 @@ public final class ChatProto {
        * Nome do conteúdo, se existente. Exemplos: "logo_ufs.png", "index.html"
        * </pre>
        *
-       * <code>optional string nome = 3;</code>
+       * <code>optional string name = 3;</code>
        */
-      public Builder setNomeBytes(
+      public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        nome_ = value;
+        name_ = value;
         onChanged();
         return this;
       }
@@ -2026,54 +2026,54 @@ public final class ChatProto {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:ChatRabbitMQ.Conteudo)
+      // @@protoc_insertion_point(builder_scope:ChatRabbitMQ.Content)
     }
 
-    // @@protoc_insertion_point(class_scope:ChatRabbitMQ.Conteudo)
-    private static final br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ChatRabbitMQ.Content)
+    private static final br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo();
+      DEFAULT_INSTANCE = new br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content();
     }
 
-    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo getDefaultInstance() {
+    public static br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<Conteudo>
-        PARSER = new com.google.protobuf.AbstractParser<Conteudo>() {
-      public Conteudo parsePartialFrom(
+    private static final com.google.protobuf.Parser<Content>
+        PARSER = new com.google.protobuf.AbstractParser<Content>() {
+      public Content parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Conteudo(input, extensionRegistry);
+          return new Content(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<Conteudo> parser() {
+    public static com.google.protobuf.Parser<Content> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Conteudo> getParserForType() {
+    public com.google.protobuf.Parser<Content> getParserForType() {
       return PARSER;
     }
 
-    public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Conteudo getDefaultInstanceForType() {
+    public br.ufs.dcomp.ChatRabbitMQ.ChatProto.Content getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ChatRabbitMQ_Mensagem_descriptor;
+    internal_static_ChatRabbitMQ_Message_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ChatRabbitMQ_Mensagem_fieldAccessorTable;
+      internal_static_ChatRabbitMQ_Message_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ChatRabbitMQ_Conteudo_descriptor;
+    internal_static_ChatRabbitMQ_Content_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ChatRabbitMQ_Conteudo_fieldAccessorTable;
+      internal_static_ChatRabbitMQ_Content_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2084,12 +2084,12 @@ public final class ChatProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\031src/main/proto/chat.proto\022\014ChatRabbitM" +
-      "Q\"p\n\010Mensagem\022\017\n\007emissor\030\001 \001(\t\022\014\n\004data\030\002" +
-      " \001(\t\022\014\n\004hora\030\003 \001(\t\022\r\n\005grupo\030\004 \001(\t\022(\n\010con" +
-      "teudo\030\005 \001(\0132\026.ChatRabbitMQ.Conteudo\"5\n\010C" +
-      "onteudo\022\014\n\004tipo\030\001 \001(\t\022\r\n\005corpo\030\002 \001(\014\022\014\n\004" +
-      "nome\030\003 \001(\tB&\n\031br.ufs.dcomp.ChatRabbitMQB" +
-      "\tChatProtob\006proto3"
+      "Q\"l\n\007Message\022\016\n\006sender\030\001 \001(\t\022\014\n\004date\030\002 \001" +
+      "(\t\022\014\n\004time\030\003 \001(\t\022\r\n\005group\030\004 \001(\t\022&\n\007conte" +
+      "nt\030\005 \001(\0132\025.ChatRabbitMQ.Content\"3\n\007Conte" +
+      "nt\022\014\n\004type\030\001 \001(\t\022\014\n\004body\030\002 \001(\014\022\014\n\004name\030\003" +
+      " \001(\tB&\n\031br.ufs.dcomp.ChatRabbitMQB\tChatP" +
+      "rotob\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2103,18 +2103,18 @@ public final class ChatProto {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_ChatRabbitMQ_Mensagem_descriptor =
+    internal_static_ChatRabbitMQ_Message_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_ChatRabbitMQ_Mensagem_fieldAccessorTable = new
+    internal_static_ChatRabbitMQ_Message_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ChatRabbitMQ_Mensagem_descriptor,
-        new java.lang.String[] { "Emissor", "Data", "Hora", "Grupo", "Conteudo", });
-    internal_static_ChatRabbitMQ_Conteudo_descriptor =
+        internal_static_ChatRabbitMQ_Message_descriptor,
+        new java.lang.String[] { "Sender", "Date", "Time", "Group", "Content", });
+    internal_static_ChatRabbitMQ_Content_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_ChatRabbitMQ_Conteudo_fieldAccessorTable = new
+    internal_static_ChatRabbitMQ_Content_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ChatRabbitMQ_Conteudo_descriptor,
-        new java.lang.String[] { "Tipo", "Corpo", "Nome", });
+        internal_static_ChatRabbitMQ_Content_descriptor,
+        new java.lang.String[] { "Type", "Body", "Name", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
