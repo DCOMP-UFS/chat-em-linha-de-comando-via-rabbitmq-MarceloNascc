@@ -117,7 +117,7 @@ class Commands {
 }
 
 public class Chat {
-  public static void main(String[] argv) throws IOException, TimeoutException {
+  public static void main(String[] argv) {
     try {
       ChatWith currentChatWith = new ChatWith();
       System.out.print("User: ");
@@ -162,16 +162,24 @@ public class Chat {
         if (userInput.startsWith("@")) {
           currentChatWith.set(userInput);
           senderChannel.queueDeclare(currentChatWith.get().substring(1), false, false, false, null);
+        } else if (userInput.startsWith("#")) {
+          currentChatWith.set(userInput);
         } else if (userInput.startsWith("!")) {
           commandsExecutor.executeCommand(userInput);
         } else if (currentChatWith.get().length() > 0) {
           Message senderMessage = new Message();
-          senderMessage.setMessage(userName, "text/plain", userInput);
+
+          boolean isAGroup = currentChatWith.get().startsWith("#");
+          String name = !isAGroup ? userName : userName + currentChatWith.get();
+          senderMessage.setMessage(name, "text/plain", userInput);
 
           ChatProto.Mensagem message = senderMessage.getMessage();
           byte[] buffer = message.toByteArray();
 
-          senderChannel.basicPublish("", currentChatWith.get().substring(1), null, buffer);
+          String exchange = isAGroup ? currentChatWith.get().substring(1) : "";
+          String routingKey = !isAGroup ? currentChatWith.get().substring(1) : "";
+
+          senderChannel.basicPublish(exchange, routingKey, null, buffer);
         } else {
           System.out.println("You must select who you want to chat with...");
         }
