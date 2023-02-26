@@ -106,7 +106,11 @@ class Commands {
         this.deleteGroup(args[1]);
         break;
       default:
-        System.out.println("Command unknown.");
+        System.out.println("Command unknown.\n\nPossible commands");
+        System.out.println("addGroup: create a new group\nEx: !addGroup groupName\n");
+        System.out.println("addUser: add a user in a group\nEX: !addUser userName groupName\n");
+        System.out.println("delFromGroup: remove a user from a group\nEx: !delFromGroup userName groupName\n");
+        System.out.println("removeGroup: delete a group\nEx: !removeGroup groupName\n");
         break;
     }
   }
