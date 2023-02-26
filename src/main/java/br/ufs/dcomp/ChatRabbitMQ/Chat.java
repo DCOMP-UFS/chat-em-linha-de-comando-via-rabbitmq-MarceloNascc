@@ -73,11 +73,11 @@ class Commands {
     this.commandsChannel.exchangeDeclare(groupName, "fanout", false, false, null);
   }
 
-  private void addUserToGroup(String groupName, String userName) {
-    System.out.println("This method has not yet been implemented.");
+  private void addUserToGroup(String userName, String groupName) throws IOException {
+    this.commandsChannel.queueBind(userName, groupName, "");
   }
 
-  private void removeUserFromGroup(String groupName, String userName) {
+  private void removeUserFromGroup(String userName, String groupName) {
     System.out.println("This method has not yet been implemented.");
   }
 
