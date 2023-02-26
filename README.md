@@ -8,7 +8,7 @@ Ver demais arquivos das etapas do projeto.
 Antonio Hamilton Santos Freitas - 201800049471
 João Marcelo dos Santos Nascimento - 201600017427
 
-# Etapa 1
-- [ ] Separar as responsabilidades: Enviar mensagens, receber mensagens, Exibir o chat
-- [ ] Verificar se existe uma forma melhor de enviar as informações da mensagem (data, usuário e o texto da mensagem)
-- [ ] Corrigir bug na apresentação de mensagens recebidas
+# Etapa 2
+- [ ] Separar as responsabilidades: Enviar mensagens, receber mensagens, Exibir o chat...
+- [ ] Aceitar nomes compostos para grupos e usuários?
+- [ ] Enviar o nome do grupo corretamente
