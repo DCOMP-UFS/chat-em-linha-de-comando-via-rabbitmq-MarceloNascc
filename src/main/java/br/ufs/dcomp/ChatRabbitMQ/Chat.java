@@ -1,5 +1,11 @@
 package br.ufs.dcomp.ChatRabbitMQ;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
+import java.io.FileOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.time.ZoneId;
@@ -21,18 +27,25 @@ class Message {
 
   // Setting senderMessage properties
 
-  public void setMessage(String userName, String groupName, String type, String userInput, Boolean isGroup) throws IOException, TimeoutException {
+  public void setMessage(String userName, String groupName, String type, String userInput, Boolean isGroup, Boolean isFile) throws IOException, TimeoutException {
     try {
       // Getting and formating date-time
       LocalDateTime dateNow = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
       String messageDate = dateNow.format(dateformat);
       String messageTime = dateNow.format(timeFormat);
 
-      byte[] userMessage = userInput.getBytes("UTF-8");
-
-      // setting Content props
-      content.setType("text/plain");
-      content.setBody(ByteString.copyFrom(userMessage));
+      content.setType(type);
+          
+      if (isFile) {
+        Path path = Paths.get(userInput);
+        byte[] fileConvertedToByte = Files.readAllBytes(path);
+        String fileNameSplitted[] = userInput.split("/");
+        content.setName(fileNameSplitted[fileNameSplitted.length-1]);
+        content.setBody(ByteString.copyFrom(fileConvertedToByte));
+      } else {
+          byte[] userMessage = userInput.getBytes("UTF-8");
+          content.setBody(ByteString.copyFrom(userMessage));
+      }
 
       // setting Message props
       senderMessage.setSender(userName);
@@ -64,24 +77,46 @@ class ChatWith {
 }
 
 class MessageRabbitMQ {
-  public void sendMessage (String userName, String userInput, ChatWith currentChatWith, Channel senderChannel) throws IOException, TimeoutException {
-    if (currentChatWith.get().length() > 0) {
-      Message senderMessage = new Message();
-  
-      boolean isChattingWithAGroup = currentChatWith.get().startsWith("#");
-      String group = isChattingWithAGroup ? currentChatWith.get() : "";
-  
-      senderMessage.setMessage(userName, group, "text/plain", userInput, isChattingWithAGroup);
-  
-      ChatProto.Message message = senderMessage.getMessage();
-      byte[] buffer = message.toByteArray();
-  
-      String exchange = isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
-      String routingKey = !isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
-  
-      senderChannel.basicPublish(exchange, routingKey, null, buffer);
-    } else {
-      System.out.println("You must select who you want to chat with...");
+  public void sendMessage (String userName, String userInput, ChatWith currentChatWith, Channel senderChannel, Boolean isFile) throws IOException, TimeoutException {
+    try {
+      if (currentChatWith.get().length() > 0) {
+        Message senderMessage = new Message();
+    
+        boolean isChattingWithAGroup = currentChatWith.get().startsWith("#");
+        String group = isChattingWithAGroup ? currentChatWith.get() : "";
+    
+        if (!isFile) {
+          senderMessage.setMessage(userName, group, "message", userInput, isChattingWithAGroup, isFile);
+        } else {
+          Path source = Paths.get(userInput);
+          String mimeType = Files.probeContentType(source);
+          if (mimeType != null) {
+            if (Files.exists(source)) {
+                senderMessage.setMessage(userName, group, mimeType, userInput, isChattingWithAGroup, isFile);
+            } else {
+              System.out.println("This file doesn't exist, send a valid file path");
+              System.out.print(currentChatWith.get() + ">> ");
+              return; 
+            }
+          } else {
+            System.out.println("Send a valid file");
+            System.out.print(currentChatWith.get() + ">> ");
+            return; 
+          }
+        }
+    
+        ChatProto.Message message = senderMessage.getMessage();
+        byte[] buffer = message.toByteArray();
+    
+        String exchange = isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
+        String routingKey = !isChattingWithAGroup ? currentChatWith.get().substring(1) : "";
+    
+        senderChannel.basicPublish(exchange, routingKey, null, buffer);
+      } else {
+        System.out.println("You must select who you want to chat with...");
+      }
+    } catch (Exception e) {
+      System.out.println(e);
     }
   }
   
@@ -93,20 +128,93 @@ class MessageRabbitMQ {
     String date = message.getDate();
     String time = message.getTime();
     String group = message.getGroup();
-    String bodyMessage = content.getBody().toStringUtf8();
+    String contentType = content.getType();
 
-    System.out.println("\n(" + date + " às " + time + ") " + sender + group + " diz: " + bodyMessage);
-    System.out.print(currentChatWith.get() + ">> ");
+    System.out.print("ContentType = " + contentType);
+    
+    switch (contentType) {
+      case "message":
+        String bodyMessage = content.getBody().toStringUtf8();
+        System.out.println("\n(" + date + " at " + time + ") " + sender + group + " says: " + bodyMessage);
+        System.out.print(currentChatWith.get() + ">> ");
+        break;
+      default:
+        String contentName = content.getName();
+        ReceiveFile receiveFileThread = new ReceiveFile(content.getBody().toByteArray(), contentName, currentChatWith, sender, group, date, time);
+        new Thread(receiveFileThread).start();
+        break;
+    }
+  }
+}
+  
+class ReceiveFile implements Runnable {
+  private byte[] fileBody;
+  private ChatWith currentChatWith;
+  private String fileName;
+  private String sender;
+  private String group;
+  private String date;
+  private String time;
+  
+  public ReceiveFile (byte[] fileBody, String fileName, ChatWith currentChatWith, String sender, String group, String date, String time) {
+    this.fileBody = fileBody;
+    this.currentChatWith = currentChatWith;
+    this.fileName = fileName;
+    this.sender = sender;
+    this.group = group;
+    this.date = date;
+    this.time = time;
+  }
+  
+  @Override
+  public void run () {
+    try {
+      FileOutputStream fos = new FileOutputStream("download/" + fileName);
+      fos.write(fileBody);
+      fos.close();
+      System.out.println("\n(" + date + " at " + time + ") file " + "\"" + fileName + "\"" + " received from " + sender + group + "!");
+      System.out.print(currentChatWith.get() + ">> ");
+    } catch (Exception e) { 
+      System.out.println("Something got wrong!");
+      System.out.println(e);
+    }
+  }
+}
+  
+class SendFile implements Runnable {
+  private MessageRabbitMQ messageRabbitMQ = new MessageRabbitMQ(); 
+  private String path;
+  private String sender;
+  private Channel senderChannel;
+  private ChatWith currentChatWith;
+  
+  public SendFile(String sender, String path, ChatWith currentChatWith, Channel senderChannel){
+    this.sender = sender;
+    this.path = path;
+    this.currentChatWith = currentChatWith;
+    this.senderChannel = senderChannel;
+  }
+  
+  @Override
+  public void run() {
+    try {
+      messageRabbitMQ.sendMessage(sender, path, currentChatWith, senderChannel, true);
+    } catch (Exception e) {
+      System.out.println("Something got wrong!");
+      System.out.println(e);
+    }
   }
 }
 
 class Commands {
   private Channel commandsChannel;
+  private ChatWith currentChatWith;
   private String userName;
 
-  public Commands(Connection conn, String currentUser) throws IOException {
+  public Commands(Connection conn, String currentUser, ChatWith currentChatWith) throws IOException {
     this.commandsChannel = conn.createChannel();
     this.userName = currentUser;
+    this.currentChatWith = currentChatWith;
   }
 
   private void printCommands() {
@@ -115,6 +223,7 @@ class Commands {
     System.out.println("addUser: add a user in a group\nEX: !addUser userName groupName\n");
     System.out.println("delFromGroup: remove a user from a group\nEx: !delFromGroup userName groupName\n");
     System.out.println("removeGroup: delete a group\nEx: !removeGroup groupName\n");
+    System.out.println("upload: uploads a file to a group or person while is talking with it\nEx: !upload path\n");
   }
 
   private boolean hasCorrectAmountOfArgs(String[] args, int length) {
@@ -144,6 +253,11 @@ class Commands {
   private void deleteGroup(String groupName) throws IOException {
     this.commandsChannel.exchangeDelete(groupName);
   }
+  
+  private void uploadFile(String path) throws IOException {
+    SendFile fileThread = new SendFile(userName, path, currentChatWith, commandsChannel);
+    new Thread(fileThread).start();
+  }
 
   public void executeCommand(String userInput) throws IOException {
     String[] args = userInput.split(" ");
@@ -170,6 +284,15 @@ class Commands {
           this.deleteGroup(args[1]);
         }
         break;
+      case "!upload":
+        if (currentChatWith.get().isEmpty()) {
+         System.out.println("You must select who you want to send the file...");
+         break;
+        }
+        if (this.hasCorrectAmountOfArgs(args, 2)) {
+          this.uploadFile(args[1]);
+        }
+        break;
       default:
         System.out.println("Command unknown.\n\n");
         this.printCommands();
@@ -190,7 +313,7 @@ public class Chat {
       String userName = input.nextLine();
 
       ConnectionFactory factory = new ConnectionFactory();
-      factory.setHost("54.237.55.155");
+      factory.setHost("34.239.249.117");
       factory.setUsername("admin");
       factory.setPassword("admin");
       factory.setVirtualHost("/");
@@ -207,7 +330,7 @@ public class Chat {
       senderChannel.queueDeclare(userName, false, false, false, null);
       consumerChannel.basicConsume(userName, true, consumer);
 
-      Commands commandsExecutor = new Commands(connection, userName);
+      Commands commandsExecutor = new Commands(connection, userName, currentChatWith);
 
       System.out.print("\n>> ");
       String userInput = input.nextLine();
@@ -225,7 +348,7 @@ public class Chat {
             commandsExecutor.executeCommand(userInput);
             break;
           default:
-            messageRabbitMQ.sendMessage(userName, userInput, currentChatWith, senderChannel);
+            messageRabbitMQ.sendMessage(userName, userInput, currentChatWith, senderChannel, false);
             break;
         }
 
@@ -235,13 +358,13 @@ public class Chat {
 
       input.close();
 
-      System.out.println("Saindo do App...");
+      System.out.println("Leaving App...");
       senderChannel.close();
       consumerChannel.close();
       connection.close();
     } catch (Exception e) {
       System.out.println(e);
-      System.out.println("1 - Verifique se o host está correto\n2 - Verifique se o usuário e senha estão corretos");
+      System.out.println("1 - Verify if the host is correct\n2 - Verify if your user and password are correct");
     }
   }
 }
