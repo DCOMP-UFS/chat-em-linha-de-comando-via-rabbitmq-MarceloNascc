@@ -129,8 +129,6 @@ class MessageRabbitMQ {
     String time = message.getTime();
     String group = message.getGroup();
     String contentType = content.getType();
-
-    System.out.print("ContentType = " + contentType);
     
     switch (contentType) {
       case "message":
@@ -313,7 +311,7 @@ public class Chat {
       String userName = input.nextLine();
 
       ConnectionFactory factory = new ConnectionFactory();
-      factory.setHost("34.239.249.117");
+      factory.setHost("rabbit-loadbalance-b6f5d4151e139b83.elb.us-east-1.amazonaws.com");
       factory.setUsername("admin");
       factory.setPassword("admin");
       factory.setVirtualHost("/");
